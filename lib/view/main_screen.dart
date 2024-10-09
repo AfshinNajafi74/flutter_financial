@@ -36,24 +36,24 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          appBar: AppBar(
-            title: const Text("data"),
-          ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          body: Stack(
-            children: [
-              Positioned.fill(
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: const Text("data"),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        body: Stack(
+          children: [
+            Positioned.fill(
                 child: IndexedStack(
-                index: controller.selectedScreen.value,
-                children:const [
-                   HomeScreen(),
-                   ProfileScreen(),
-                ],
-              ))
-            ],
-          ),
+              index: controller.selectedScreen.value,
+              children: const [
+                HomeScreen(),
+                ProfileScreen(),
+              ],
+            ))
+          ],
+        ),
         floatingActionButton: SizedBox(
           width: 50,
           height: 50,
@@ -65,27 +65,24 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
               height: 50,
               child: ScaleTransition(
                 alignment: Alignment.center,
-                scale: Tween<double>(begin: 0.0, end: 1.0).animate(
-                    CurvedAnimation(
-                        parent: animationController,
-                        curve: Curves.fastOutSlowIn)),
+                scale: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn)),
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                        colors: [
-                          CupertinoColors.activeBlue,
-                          CupertinoColors.systemGrey6,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight
+                      colors: [
+                        CupertinoColors.activeBlue,
+                        CupertinoColors.systemGrey6,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
                     shape: BoxShape.circle,
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                          color: CupertinoColors.activeBlue
-                              .withOpacity(0.4),
-                          offset: const Offset(0.0, 16.0),
-                          blurRadius: 16.0),
+                        color: CupertinoColors.activeBlue.withOpacity(0.4),
+                        offset: const Offset(0.0, 16.0),
+                        blurRadius: 16.0,
+                      ),
                     ],
                   ),
                   child: Material(
@@ -95,7 +92,9 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                       highlightColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       onTap: () {
-                        Get.toNamed(NameRoute.addEditTransactionScreen,);
+                        Get.toNamed(
+                          NameRoute.addEditTransactionScreen,
+                        );
                       },
                       child: const Icon(
                         Icons.add,
@@ -107,43 +106,43 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             ),
           ),
         ),
-          bottomNavigationBar: BottomAppBar(
-            notchMargin: 8,
-            height: kToolbarHeight,
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            shape: const CircularNotchedRectangle(),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    controller.selectedScreen.value = 0;
-                  },
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.home,
-                      ),
-                      Text("home"),
-                    ],
-                  ),
+        bottomNavigationBar: BottomAppBar(
+          notchMargin: 8,
+          height: kToolbarHeight,
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+          shape: const CircularNotchedRectangle(),
+          child: Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  controller.selectedScreen.value = 0;
+                },
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.home,
+                    ),
+                    Text("home"),
+                  ],
                 ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    controller.selectedScreen.value = 1;
-                  },
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.person),
-                      Text("profile"),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              ),
+              const Spacer(),
+              GestureDetector(
+                onTap: () {
+                  controller.selectedScreen.value = 1;
+                },
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.person),
+                    Text("profile"),
+                  ],
+                ),
+              )
+            ],
           ),
+        ),
       ),
     );
   }

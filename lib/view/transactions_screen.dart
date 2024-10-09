@@ -19,7 +19,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("تراکنش ها"),),
+      appBar: AppBar(
+        title: const Text("تراکنش ها"),
+      ),
       body: GetBuilder<AddEditTransactionController>(
         init: AddEditTransactionController(),
         builder: (controller) {
@@ -29,9 +31,12 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
               future: controller.fetchTransactions(),
               builder: (context, snapshot) {
                 List<TransactionModel> data = snapshot.data != null ? snapshot.data as List<TransactionModel> : [];
-                if(snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator(color: Colors.green,));
-                } else if (data.isNotEmpty && snapshot.data != null){
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    color: Colors.green,
+                  ));
+                } else if (data.isNotEmpty && snapshot.data != null) {
                   return ListView.builder(
                     itemCount: data.length,
                     itemBuilder: (context, index) {
@@ -47,7 +52,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8.0),
                             child: Column(
                               children: [
                                 Row(
@@ -55,11 +60,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                   children: [
                                     Text(transaction.name),
                                     Text(DateTime.fromMillisecondsSinceEpoch(transaction.dateTime).showDate(context)),
-                                    Text( transaction.typeCategory == TypeCategory.payment ?
-                                        "-${transaction.amount}" : "+${transaction.amount}",
-                                      style: TextStyle(
-                                        color: transaction.typeCategory == TypeCategory.payment ? Colors.red : Colors.green
-                                      ),
+                                    Text(
+                                      transaction.typeCategory == TypeCategory.payment ? "-${transaction.amount}" : "+${transaction.amount}",
+                                      style: TextStyle(color: transaction.typeCategory == TypeCategory.payment ? Colors.red : Colors.green),
                                     )
                                   ],
                                 ),
@@ -72,7 +75,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                   );
                 } else {
                   return const Center(
-                    child: Text("no data",),
+                    child: Text(
+                      "no data",
+                    ),
                   );
                 }
               },

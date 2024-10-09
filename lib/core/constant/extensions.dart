@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
-extension DateFormatter on Jalali{
+extension DateFormatter on Jalali {
   String showDate() {
     JalaliFormatter dateFormat = formatter;
     return "${dateFormat.yyyy}/${dateFormat.m}/${dateFormat.d} ${dateFormat.wN}";
@@ -43,7 +43,7 @@ extension CustomDate on DateTime {
     }
     // For Gregorian Calendar
     else {
-      final year = DateFormat.y().format(this);  // Year with correct locale
+      final year = DateFormat.y().format(this); // Year with correct locale
       final month = DateFormat.MMMM(locale).format(this); // Full month name
       final day = DateFormat.d(locale).format(this); // Day
       return "$day $month $year";
@@ -64,12 +64,12 @@ extension CustomDate on DateTime {
       'آذر',
       'دی',
       'بهمن',
-      'اسفند'
+      'اسفند',
     ];
-    return jalaliMonths[month - 1];  // month is 1-based
+
+    return jalaliMonths[month - 1]; // month is 1-based
   }
 }
-
 
 class ThousandsSeparatorInputFormatter extends TextInputFormatter {
   @override

@@ -18,7 +18,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("دسته ها"),),
+      appBar: AppBar(
+        title: Text("دسته ها"),
+      ),
       body: GetBuilder<AddEditCategoryController>(
         init: categoryController,
         builder: (controller) {
@@ -28,9 +30,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               future: categoryController.fetchCategories(),
               builder: (context, snapshot) {
                 List<CategoryModel> data = snapshot.data != null ? snapshot.data as List<CategoryModel> : [];
-                if(snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator(color: Colors.green,));
-                } else if (data.isNotEmpty && snapshot.data != null){
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                      child: CircularProgressIndicator(
+                    color: Colors.green,
+                  ));
+                } else if (data.isNotEmpty && snapshot.data != null) {
                   return ListView.builder(
                     itemCount: data.length,
                     itemBuilder: (context, index) {
@@ -41,19 +46,15 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           color: Colors.blue,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8.0),
                             child: Column(
                               children: [
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Icon(
-                                      category.typeCategory == TypeCategory.payment
-                                          ? Icons.keyboard_arrow_down_rounded
-                                          : Icons.keyboard_arrow_up_rounded,
-                                      color: category.typeCategory == TypeCategory.payment
-                                          ? Colors.red
-                                          : Colors.green,
+                                      category.typeCategory == TypeCategory.payment ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded,
+                                      color: category.typeCategory == TypeCategory.payment ? Colors.red : Colors.green,
                                       size: 32,
                                     ),
                                     Text(category.name)
@@ -79,7 +80,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   );
                 } else {
                   return Center(
-                    child: Text("no data",),
+                    child: Text("no data"),
                   );
                 }
               },

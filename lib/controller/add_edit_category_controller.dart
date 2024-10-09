@@ -3,17 +3,17 @@ import 'package:get/get.dart';
 import 'package:income_expenditure/controller/data_base_controller.dart';
 import 'package:income_expenditure/model/category_model/category_model.dart';
 
-class AddEditCategoryController extends GetxController{
+class AddEditCategoryController extends GetxController {
   DataBaseController dataBaseController = Get.find<DataBaseController>();
   TextEditingController categoryNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   List<CategoryModel> categories = [];
   TypeCategory selectedCategoryType = TypeCategory.payment;
 
-  void submitCategory () {
+  void submitCategory() {
     CategoryModel category = CategoryModel(
       name: categoryNameController.text,
-      typeCategory: selectedCategoryType
+      typeCategory: selectedCategoryType,
     );
     dataBaseController.insertCategory(category);
     categoryNameController.clear();
@@ -37,18 +37,16 @@ class AddEditCategoryController extends GetxController{
     update();
   }
 
-
-
   @override
   void onInit() {
     super.onInit();
     fetchCategories();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  //   print("oncolsee");
-  //   categories.clear();
-  // }
+// @override
+// void onClose() {
+//   super.onClose();
+//   print("oncolsee");
+//   categories.clear();
+// }
 }

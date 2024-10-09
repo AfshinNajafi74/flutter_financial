@@ -9,8 +9,9 @@ import 'package:sqflite/sqflite.dart' as sqflite;
 
 part 'database.g.dart'; // the generated code will be there
 
-@Database(version: 1, entities: [TransactionModel,CategoryModel])
+@Database(version: 1, entities: [TransactionModel, CategoryModel])
 abstract class TransactionModelDatabase extends FloorDatabase {
   TransactionModelDao get transactionModelDao;
-  CategoryModelDao get  categoryModelDao;
+
+  CategoryModelDao get categoryModelDao;
 }

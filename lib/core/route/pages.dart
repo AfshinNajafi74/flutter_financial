@@ -10,9 +10,7 @@ import 'package:income_expenditure/view/profile_screen.dart';
 import 'package:income_expenditure/view/transactions_screen.dart';
 
 class AppPage {
-  AppPage._();
-
-  static List<GetPage<dynamic>>  pages = [
+  static List<GetPage<dynamic>> pages = [
     GetPage(
       name: NameRoute.mainScreen,
       page: () => MainScreen(),

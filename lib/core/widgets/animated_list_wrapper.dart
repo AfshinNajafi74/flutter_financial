@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AnimatedListWrapper extends StatefulWidget {
-  const AnimatedListWrapper({super.key,required this.child, required this.index});
+  const AnimatedListWrapper({super.key, required this.child, required this.index});
+
   final Widget child;
   final int index;
 
@@ -16,11 +17,11 @@ class _AnimatedListWrapperState extends State<AnimatedListWrapper> with SingleTi
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(duration: Duration(milliseconds: 300 * (widget.index)),vsync: this,);
-    _animation = Tween<Offset>(
-      begin: Offset(0.0, 1.0),
-      end: Offset(0, 0)
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 300 * (widget.index)),
+      vsync: this,
+    );
+    _animation = Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0, 0)).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
     _controller.forward();
   }
 

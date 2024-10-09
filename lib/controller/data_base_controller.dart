@@ -3,8 +3,7 @@ import 'package:income_expenditure/data_source/locale/database.dart';
 import 'package:income_expenditure/model/category_model/category_model.dart';
 import 'package:income_expenditure/model/transaction_model/transaction_model.dart';
 
-class DataBaseController extends GetxController{
-
+class DataBaseController extends GetxController {
   final _fetchTransactionData = Get.find<TransactionModelDatabase>().transactionModelDao;
   final _fetchCategoryData = Get.find<TransactionModelDatabase>().categoryModelDao;
 
