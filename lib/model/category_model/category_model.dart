@@ -8,10 +8,14 @@ class CategoryModel {
   final String name;
   final TypeCategory typeCategory;
 
-  CategoryModel({this.id,required this.name,required this.typeCategory});
+  CategoryModel({
+    this.id,
+    required this.name,
+    required this.typeCategory,
+  });
 }
 
-enum TypeCategory{
+enum TypeCategory {
   payment,
-  receipt
+  receipt,
 }

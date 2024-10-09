@@ -6,7 +6,7 @@ import 'package:income_expenditure/model/category_model/category_model.dart';
 import 'package:income_expenditure/model/transaction_model/transaction_model.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
-class AddEditTransactionController extends GetxController{
+class AddEditTransactionController extends GetxController {
   DataBaseController dataBaseController = Get.find<DataBaseController>();
   TextEditingController amountController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
@@ -20,7 +20,7 @@ class AddEditTransactionController extends GetxController{
   String? category;
 
   Future<DateTime?> datePick(BuildContext context) async {
-    if(Localizations.localeOf(context).languageCode == "fa") {
+    if (Localizations.localeOf(context).languageCode == "fa") {
       return showJalaliDatePicker(
         context,
         initialDate: Jalali.now(),
@@ -37,10 +37,10 @@ class AddEditTransactionController extends GetxController{
       );
     } else {
       return showDatePicker(
+        context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(2021),
         lastDate: DateTime(2050),
-        context: context
       ).then(
         (date) {
           if (date != null) {
@@ -53,21 +53,22 @@ class AddEditTransactionController extends GetxController{
     }
   }
 
-  submitTransaction () {
+  submitTransaction() {
     TransactionModel transaction = TransactionModel(
-        dateTime: dateTime.millisecondsSinceEpoch,
-        name: categoryController.text,
-        amount: amountController.text,
-        description: descriptionController.text,
-        typeCategory: selectedCategoryType
+      dateTime: dateTime.millisecondsSinceEpoch,
+      name: categoryController.text,
+      amount: amountController.text,
+      description: descriptionController.text,
+      typeCategory: selectedCategoryType,
     );
     dataBaseController.insertTransaction(transaction);
   }
 
   void validateCategoary() {
-    if(categoryController.text.isEmpty){
+    if (categoryController.text.isEmpty) {
       isCategorySelected = false;
-    }else {
+    }
+    else {
       isCategorySelected = true;
     }
     update();

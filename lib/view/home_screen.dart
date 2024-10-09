@@ -24,14 +24,15 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       height: 75,
                       alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                        color: CupertinoColors.activeBlue
+                      decoration: const BoxDecoration(color: CupertinoColors.activeBlue),
+                      child: const Text(
+                        " دسته بندی ها",
+                        style: TextStyle(color: Colors.white),
                       ),
-                      child: const Text(" دسته بندی ها",style: TextStyle(color: Colors.white),),
                     ),
                   ),
                 ),
-                const SizedBox(width: 8,),
+                const SizedBox(width: 8),
                 Expanded(
                   child: InkWell(
                     onTap: () {
@@ -40,10 +41,11 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       height: 75,
                       alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                        color: CupertinoColors.activeBlue
+                      decoration: const BoxDecoration(color: CupertinoColors.activeBlue),
+                      child: const Text(
+                        "تراکنش ها",
+                        style: TextStyle(color: Colors.white),
                       ),
-                      child: const Text("تراکنش ها",style: TextStyle(color: Colors.white)),
                     ),
                   ),
                 ),

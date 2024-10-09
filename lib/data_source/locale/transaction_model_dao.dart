@@ -2,7 +2,7 @@ import 'package:floor/floor.dart';
 import 'package:income_expenditure/model/transaction_model/transaction_model.dart';
 
 @dao
-abstract class TransactionModelDao{
+abstract class TransactionModelDao {
   @Query('SELECT * FROM TransactionModel')
   Future<List<TransactionModel>> getAllTransactionModel();
 

@@ -16,7 +16,7 @@ class AddCategoryScreen extends StatelessWidget {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(8,8,8,0),
+        padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
         child: Column(
           children: [
             GetBuilder<AddEditCategoryController>(
@@ -28,61 +28,73 @@ class AddCategoryScreen extends StatelessWidget {
                   },
                   groupValue: controller.selectedCategoryType,
                   children: {
-                    TypeCategory.receipt : Text("دریافتی"),
-                    TypeCategory.payment : Text("پرداختی")
+                    TypeCategory.receipt: Text("دریافتی"),
+                    TypeCategory.payment: Text("پرداختی"),
                   },
                 );
               },
             ),
-            SizedBox(height: 16,),
+            SizedBox(height: 16),
             Form(
-              key: categoryController.formKey,
-             child: TextFormField(
-               controller: categoryController.categoryNameController,
-               validator: (value) {
-                 if (value == null || value.isEmpty) {
-                   return 'Please enter some text';
-                 }
-                 return null;
-               },
-               decoration: InputDecoration(
-                   enabledBorder: OutlineInputBorder(
-                     borderRadius: BorderRadius.circular(8),
-                     borderSide: BorderSide(color: Colors.grey),
-                   ),
-                   focusedBorder: OutlineInputBorder(
-                     borderRadius: BorderRadius.circular(8),
-                     borderSide: BorderSide(color: Colors.green),
-                   ),
-                   errorBorder: OutlineInputBorder(
-                     borderRadius: BorderRadius.circular(8),
-                     borderSide: BorderSide(color: Colors.red),
-                   ),
-                   hintText: "نام دسته"
-               ),
-             )
-            ),
+                key: categoryController.formKey,
+                child: TextFormField(
+                  controller: categoryController.categoryNameController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: Colors.red),
+                      ),
+                      hintText: "نام دسته"),
+                )),
             const Spacer(),
             SizedBox(
               width: size.width,
               child: ElevatedButton(
                   style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-                      backgroundColor: WidgetStatePropertyAll(Color(0xff070675))
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    backgroundColor: WidgetStatePropertyAll(
+                      Color(0xff070675),
+                    ),
                   ),
                   onPressed: () {
-                    if(categoryController.formKey.currentState!.validate()){
+                    if (categoryController.formKey.currentState!.validate()) {
                       categoryController.submitCategory();
                       SnackBarWidget().show(context);
-                      Get.offAllNamed(NameRoute.categoriesScreen,predicate: (route) {
-                        return route.settings.name == NameRoute.mainScreen;
-                      },);
+                      Get.offAllNamed(
+                        NameRoute.categoriesScreen,
+                        predicate: (route) {
+                          return route.settings.name == NameRoute.mainScreen;
+                        },
+                      );
                     }
                   },
-                  child: Text("ثـبـت",style: TextStyle(fontWeight: FontWeight.w700,color: Colors.white),)
-              ),
+                  child: Text(
+                    "ثـبـت",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  )),
             ),
-            SizedBox(height: 12,),
+            SizedBox(height: 12),
           ],
         ),
       ),

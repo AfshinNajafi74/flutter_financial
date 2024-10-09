@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:income_expenditure/core/widgets/bubble_indicator_painter.dart';
@@ -7,6 +6,7 @@ import 'package:income_expenditure/view/add_transaction_screen.dart';
 
 class AddEditTransactionScreen extends StatefulWidget {
   static const String route = "/login-screen";
+
   const AddEditTransactionScreen({super.key});
 
   @override
@@ -34,10 +34,10 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("عملیات جدید"),
-        centerTitle: true,
-      ),
+        appBar: AppBar(
+          title: Text("عملیات جدید"),
+          centerTitle: true,
+        ),
         body: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -52,7 +52,7 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   _buildMenuBar(context),
-                  SizedBox(height: 8,),
+                  SizedBox(height: 8),
                   Expanded(
                     flex: 2,
                     child: PageView(
@@ -75,7 +75,7 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
                       children: <Widget>[
                         ConstrainedBox(
                           constraints: const BoxConstraints.expand(),
-                          child:  const AddTransactionScreen(),
+                          child: const AddTransactionScreen(),
                         ),
                         ConstrainedBox(
                           constraints: const BoxConstraints.expand(),
@@ -97,12 +97,14 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
       height: 50.0,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-            colors: [
-              CupertinoColors.activeBlue,
-              CupertinoColors.systemGrey6,
-            ]
+          colors: [
+            CupertinoColors.activeBlue,
+            CupertinoColors.systemGrey6,
+          ],
         ),
-        borderRadius: BorderRadius.all(Radius.circular(25.0)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(25.0),
+        ),
       ),
       child: CustomPaint(
         painter: BubbleIndicatorPainter(pageController: _pageController),
@@ -117,10 +119,7 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
                 onPressed: _onSignInButtonPress,
                 child: Text(
                   'تراکنش',
-                  style: TextStyle(
-                      color: Localizations.localeOf(context).languageCode == "fa" ? right : left,
-                      fontSize: 16.0,
-                      fontFamily: 'WorkSansSemiBold'),
+                  style: TextStyle(color: Localizations.localeOf(context).languageCode == "fa" ? right : left, fontSize: 16.0, fontFamily: 'WorkSansSemiBold'),
                 ),
               ),
             ),
@@ -134,9 +133,10 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
                 child: Text(
                   'دسته بندی ها',
                   style: TextStyle(
-                      color: Localizations.localeOf(context).languageCode == "fa" ? left : right,
-                      fontSize: 16.0,
-                      fontFamily: 'WorkSansSemiBold'),
+                    color: Localizations.localeOf(context).languageCode == "fa" ? left : right,
+                    fontSize: 16.0,
+                    fontFamily: 'WorkSansSemiBold',
+                  ),
                 ),
               ),
             ),
@@ -147,12 +147,18 @@ class _AddEditTransactionScreenState extends State<AddEditTransactionScreen> wit
   }
 
   void _onSignInButtonPress() {
-    _pageController.animateToPage(0,
-        duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+    _pageController.animateToPage(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.decelerate,
+    );
   }
 
   void _onSignUpButtonPress() {
-    _pageController.animateToPage(1,
-        duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+    _pageController.animateToPage(
+      1,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.decelerate,
+    );
   }
 }
